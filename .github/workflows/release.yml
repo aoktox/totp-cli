@@ -9,14 +9,9 @@ jobs:
     strategy:
       matrix:
         arch: ['arm64', 'amd64']
-        os: [ubuntu-latest, macOS-latest]
-        include:
-          - os: ubuntu-latest
-            goos: linux
-          - os: macOS-latest
-            goos: darwin
+        goos: [linux, darwin]
     name: Release ${{ matrix.goos }}/${{ matrix.arch }}
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: release ${{ matrix.goos }}/${{ matrix.arch }}
